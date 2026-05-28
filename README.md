@@ -34,7 +34,7 @@ transcribe(audio, "output.txt")
 
 # With custom config
 transcribe(
-  "audio.wav",
+  audio,
   "output.txt",
   config = transcription_config(
     language = "en",
