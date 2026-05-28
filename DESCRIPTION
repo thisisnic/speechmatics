@@ -1,0 +1,21 @@
+Package: speechmatics
+Title: R Client for the Speechmatics API
+Version: 0.0.0.9000
+Authors@R:
+    person("Nic", "Crane", , "thisisnic@gmail.com", role = c("aut", "cre"))
+Description: Transcribe audio files using the Speechmatics speech-to-text
+    API. Supports custom vocabulary, speaker diarization, punctuation
+    control, and audio filtering.
+URL: https://github.com/thisisnic/speechmatics
+BugReports: https://github.com/thisisnic/speechmatics/issues
+License: MIT + file LICENSE
+Imports:
+    cli,
+    curl,
+    httr2,
+    jsonlite,
+    rlang
+Depends: R (>= 4.2.0)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
