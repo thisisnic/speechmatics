@@ -4,12 +4,19 @@
 \alias{transcribe}
 \title{Transcribe an audio file}
 \usage{
-transcribe(input, output, config = transcription_config(), poll_interval = 5)
+transcribe(
+  input,
+  output = NULL,
+  config = transcription_config(),
+  poll_interval = 5
+)
 }
 \arguments{
 \item{input}{Path to the input audio file.}
 
-\item{output}{Path to the output txt file.}
+\item{output}{Path to the output transcript file. If \code{NULL} (the default),
+the output path is derived from \code{input} by replacing the file extension
+with \code{.txt}.}
 
 \item{config}{Config from \code{transcription_config()}.}
 
@@ -19,5 +26,6 @@ transcribe(input, output, config = transcription_config(), poll_interval = 5)
 The output path, invisibly.
 }
 \description{
-Submits, polls until done, writes transcript to file.
+Submits an audio file to the Speechmatics API, polls until complete,
+and writes the transcript to a file.
 }

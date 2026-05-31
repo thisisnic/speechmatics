@@ -54,19 +54,37 @@ get_status <- function(job_id) {
   httr2::resp_body_json(resp)$job$status
 }
 
-#' Get transcript for a completed job
+#' Get transcript for a completed job as text
 #'
 #' @param job_id Job ID string.
-#' @param format `"txt"` or `"json-v2"`.
+#' @param format Output format: `"txt"` for plain text (default) or `"srt"` for
+#'   subtitles.
 #' @return Transcript as a character string.
 #' @noRd
-get_transcript <- function(job_id, format = "txt") {
+get_transcript <- function(job_id, format = c("txt", "srt")) {
+  format <- match.arg(format)
+
   resp <- req() |>
     httr2::req_url_path_append("jobs", job_id, "transcript") |>
     httr2::req_url_query(format = format) |>
     httr2::req_perform()
 
   httr2::resp_body_string(resp)
+}
+
+#' Get transcript for a completed job as structured data
+#'
+#' @param job_id Job ID string.
+#' @return A list containing the parsed JSON transcript with timestamps,
+#'   speaker labels, and confidence scores.
+#' @noRd
+get_transcript_json <- function(job_id) {
+  resp <- req() |>
+    httr2::req_url_path_append("jobs", job_id, "transcript") |>
+    httr2::req_url_query(format = "json-v2") |>
+    httr2::req_perform()
+
+  httr2::resp_body_json(resp)
 }
 
 #' Delete a job
@@ -100,15 +118,33 @@ usage <- function() {
 
 #' Transcribe an audio file
 #'
-#' Submits, polls until done, writes transcript to file.
+#' Submits an audio file to the Speechmatics API, polls until complete,
+#' and writes the transcript to a file.
 #'
 #' @param input Path to the input audio file.
-#' @param output Path to the output txt file.
+#' @param output Path to the output transcript file. If `NULL` (the default),
+#'   the output path is derived from `input` by replacing the file extension
+#'   with `.txt`.
 #' @param config Config from `transcription_config()`.
 #' @param poll_interval Seconds between status checks.
 #' @return The output path, invisibly.
 #' @export
-transcribe <- function(input, output, config = transcription_config(), poll_interval = 5) {
+transcribe <- function(input, output = NULL, config = transcription_config(),
+                       poll_interval = 5) {
+  if (!is.character(input) || length(input) != 1) {
+    cli::cli_abort("{.arg input} must be a single string, not {.obj_type_friendly {input}}.")
+  }
+  if (!file.exists(input)) {
+    cli::cli_abort("Can't find file {.path {input}}.")
+  }
+  if (!is.null(output) && (!is.character(output) || length(output) != 1)) {
+    cli::cli_abort("{.arg output} must be a single string or {.code NULL}, not {.obj_type_friendly {output}}.")
+  }
+
+  if (is.null(output)) {
+    output <- sub("\\.[^.]+$", ".txt", input)
+  }
+
   cli::cli_progress_step("Submitting {.path {input}}")
   job_id <- submit(input, config)
   cli::cli_alert_info("Job ID: {.val {job_id}}")
@@ -121,7 +157,7 @@ transcribe <- function(input, output, config = transcription_config(), poll_inte
   }
 
   if (status != "done") {
-    cli::cli_abort("Job failed with status: {.val {status}}")
+    cli::cli_abort("Transcription job failed with status {.val {status}}.")
   }
 
   cli::cli_progress_step("Downloading transcript")
