@@ -123,8 +123,8 @@ usage <- function() {
 #'
 #' @param input Path to the input audio file.
 #' @param output Path to the output transcript file. If `NULL` (the default),
-#'   the output path is derived from `input` by replacing the file extension
-#'   with `.txt`.
+#'   the output is written to the working directory with the same name as the
+#'   input file but with a `.txt` extension.
 #' @param config Config from `transcription_config()`.
 #' @param poll_interval Seconds between status checks.
 #' @return The output path, invisibly.
@@ -142,7 +142,7 @@ transcribe <- function(input, output = NULL, config = transcription_config(),
   }
 
   if (is.null(output)) {
-    output <- sub("\\.[^.]+$", ".txt", input)
+    output <- sub("\\.[^.]+$", ".txt", basename(input))
   }
 
   cli::cli_progress_step("Submitting {.path {input}}")

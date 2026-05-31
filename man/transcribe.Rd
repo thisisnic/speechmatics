@@ -15,8 +15,8 @@ transcribe(
 \item{input}{Path to the input audio file.}
 
 \item{output}{Path to the output transcript file. If \code{NULL} (the default),
-the output path is derived from \code{input} by replacing the file extension
-with \code{.txt}.}
+the output is written to the working directory with the same name as the
+input file but with a \code{.txt} extension.}
 
 \item{config}{Config from \code{transcription_config()}.}
 
