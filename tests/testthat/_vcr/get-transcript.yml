@@ -1,0 +1,24 @@
+http_interactions:
+- request:
+    method: GET
+    uri: https://asr.api.speechmatics.com/v2/jobs/75m0l7rsfy/transcript?format=txt
+  response:
+    status: 200
+    headers:
+      date: Sun, 31 May 2026 21:32:49 GMT
+      content-type: text/plain
+      content-length: '29'
+      strict-transport-security: max-age=31536000; includeSubDomains
+      request-id: d4a09e1b6292ca373108c00a7ec576a6
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      access-control-allow-methods: GET, PUT, POST, DELETE, PATCH, OPTIONS
+      access-control-allow-headers: DNT,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization
+      access-control-max-age: '1728000'
+      x-azure-ref: 20260531T213249Z-15648b7bc8bl8c5vhC1LON0zws00000002r00000000062ex
+      x-cache: CONFIG_NOCACHE
+      accept-ranges: bytes
+    body:
+      string: Hi. This is a test recording.
+  recorded_at: 2026-05-31 21:32:49
+recorded_with: VCR-vcr/2.1.0

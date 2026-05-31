@@ -1,1 +1,1 @@
-vcr::vcr_configure(dir = vcr::vcr_test_path("_vcr"))
+vcr::vcr_configure(dir = "_vcr")
