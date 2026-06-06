@@ -68,10 +68,9 @@ get_status <- function(job_id) {
 #'   (`"json-v2"`).
 #' @examples
 #' \dontrun{
-#' jobs <- sm_list_jobs()
-#' sm_get_transcript(jobs$id[1])
-#' sm_get_transcript(jobs$id[1], format = "srt")
-#' sm_get_transcript(jobs$id[1], format = "json-v2")
+#' sm_get_transcript("2om9psu1np")
+#' sm_get_transcript("2om9psu1np", format = "srt")
+#' sm_get_transcript("2om9psu1np", format = "json-v2")
 #' }
 #' @export
 sm_get_transcript <- function(job_id, format = c("txt", "srt", "json-v2")) {

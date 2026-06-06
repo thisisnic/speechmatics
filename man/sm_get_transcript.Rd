@@ -22,9 +22,8 @@ Get transcript for a completed job
 }
 \examples{
 \dontrun{
-jobs <- sm_list_jobs()
-sm_get_transcript(jobs$id[1])
-sm_get_transcript(jobs$id[1], format = "srt")
-sm_get_transcript(jobs$id[1], format = "json-v2")
+sm_get_transcript("2om9psu1np")
+sm_get_transcript("2om9psu1np", format = "srt")
+sm_get_transcript("2om9psu1np", format = "json-v2")
 }
 }

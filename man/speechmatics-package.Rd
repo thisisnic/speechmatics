@@ -12,6 +12,7 @@ Transcribe audio files using the 'Speechmatics' speech-to-text API \url{https://
 Useful links:
 \itemize{
   \item \url{https://github.com/thisisnic/speechmatics}
+  \item \url{https://thisisnic.github.io/speechmatics/}
   \item Report bugs at \url{https://github.com/thisisnic/speechmatics/issues}
 }
 
