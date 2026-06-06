@@ -17,3 +17,11 @@ sm_delete_job(job_id)
 ## Value
 
 `TRUE`, invisibly.
+
+## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+sm_delete_job("2om9psu1np")
+} # }
+```

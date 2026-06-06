@@ -16,8 +16,8 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Nic Crane <thisisnic@gmail.com>
+**Maintainer**: Nic Crane <thisisnic@gmail.com> \[copyright holder\]
 
 Authors:
 
-- Nic Crane <thisisnic@gmail.com>
+- Nic Crane <thisisnic@gmail.com> \[copyright holder\]
