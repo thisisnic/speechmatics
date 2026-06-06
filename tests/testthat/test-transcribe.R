@@ -7,21 +7,18 @@ test_that("transcribe validates inputs", {
 })
 
 test_that("get_status returns status string", {
-  skip_on_cran()
   vcr::local_cassette("get-status")
   status <- get_status("75m0l7rsfy")
   expect_identical(status, "done")
 })
 
 test_that("get_transcript returns transcript text", {
-  skip_on_cran()
   vcr::local_cassette("get-transcript")
   transcript <- sm_get_transcript("75m0l7rsfy")
   expect_identical(transcript, "Hi. This is a test recording.")
 })
 
 test_that("list_jobs returns a data frame", {
-  skip_on_cran()
   vcr::local_cassette("list-jobs")
   jobs <- sm_list_jobs()
   expect_s3_class(jobs, "data.frame")
