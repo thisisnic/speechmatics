@@ -75,9 +75,17 @@
 <span><span class="co"># Transcribe an audio file (writes `./testrecording.txt`)</span></span>
 <span><span class="va">audio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"testrecording.mp3"</span>, package <span class="op">=</span> <span class="st">"speechmatics"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/sm_transcribe.html">sm_transcribe</a></span><span class="op">(</span><span class="va">audio</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Submitting 'testrecording.mp3'</span></span>
+<span><span class="co">#&gt; ℹ Job ID: "2om9psu1np"</span></span>
+<span><span class="co">#&gt; ✔ Waiting for transcription [5.8s]</span></span>
+<span><span class="co">#&gt; ✔ Saved to testrecording.txt</span></span>
 <span></span>
 <span><span class="co"># Specify output path</span></span>
 <span><span class="fu"><a href="reference/sm_transcribe.html">sm_transcribe</a></span><span class="op">(</span><span class="va">audio</span>, <span class="st">"output.txt"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Submitting 'testrecording.mp3'</span></span>
+<span><span class="co">#&gt; ℹ Job ID: "2om9psu1np"</span></span>
+<span><span class="co">#&gt; ✔ Waiting for transcription [5.8s]</span></span>
+<span><span class="co">#&gt; ✔ Saved to output.txt</span></span>
 <span></span>
 <span><span class="co"># Enhanced quality with speaker diarization</span></span>
 <span><span class="fu"><a href="reference/sm_transcribe.html">sm_transcribe</a></span><span class="op">(</span></span>
@@ -86,7 +94,11 @@
 <span>    quality <span class="op">=</span> <span class="st">"enhanced"</span>,</span>
 <span>    diarization <span class="op">=</span> <span class="fu"><a href="reference/sm_diarize_speaker.html">sm_diarize_speaker</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Submitting 'testrecording.mp3'</span></span>
+<span><span class="co">#&gt; ℹ Job ID: "3kn7xr2abc"</span></span>
+<span><span class="co">#&gt; ✔ Waiting for transcription [7.2s]</span></span>
+<span><span class="co">#&gt; ✔ Saved to testrecording.txt</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">

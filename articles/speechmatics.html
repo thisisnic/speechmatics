@@ -80,10 +80,18 @@ directory:</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/thisisnic/speechmatics" class="external-link">speechmatics</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">audio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"testrecording.mp3"</span>, package <span class="op">=</span> <span class="st">"speechmatics"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/sm_transcribe.html">sm_transcribe</a></span><span class="op">(</span><span class="va">audio</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/sm_transcribe.html">sm_transcribe</a></span><span class="op">(</span><span class="va">audio</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Submitting 'testrecording.mp3'</span></span>
+<span><span class="co">#&gt; ℹ Job ID: "2om9psu1np"</span></span>
+<span><span class="co">#&gt; ✔ Waiting for transcription [5.8s]</span></span>
+<span><span class="co">#&gt; ✔ Saved to testrecording.txt</span></span></code></pre></div>
 <p>You can also specify the output path:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/sm_transcribe.html">sm_transcribe</a></span><span class="op">(</span><span class="va">audio</span>, <span class="st">"my_transcript.txt"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/sm_transcribe.html">sm_transcribe</a></span><span class="op">(</span><span class="va">audio</span>, <span class="st">"my_transcript.txt"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Submitting 'testrecording.mp3'</span></span>
+<span><span class="co">#&gt; ℹ Job ID: "2om9psu1np"</span></span>
+<span><span class="co">#&gt; ✔ Waiting for transcription [5.8s]</span></span>
+<span><span class="co">#&gt; ✔ Saved to my_transcript.txt</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="configuration">Configuration<a class="anchor" aria-label="anchor" href="#configuration"></a>
@@ -95,7 +103,11 @@ quality, and diarization:</p>
 <span><span class="fu"><a href="../reference/sm_transcribe.html">sm_transcribe</a></span><span class="op">(</span></span>
 <span>  <span class="va">audio</span>,</span>
 <span>  config <span class="op">=</span> <span class="fu"><a href="../reference/sm_transcription_config.html">sm_transcription_config</a></span><span class="op">(</span>language <span class="op">=</span> <span class="st">"fr"</span>, quality <span class="op">=</span> <span class="st">"enhanced"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Submitting 'testrecording.mp3'</span></span>
+<span><span class="co">#&gt; ℹ Job ID: "2om9psu1np"</span></span>
+<span><span class="co">#&gt; ✔ Waiting for transcription [6.1s]</span></span>
+<span><span class="co">#&gt; ✔ Saved to testrecording.txt</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="speaker-diarization">Speaker diarization<a class="anchor" aria-label="anchor" href="#speaker-diarization"></a>
 </h3>
@@ -105,7 +117,11 @@ channel:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/sm_transcribe.html">sm_transcribe</a></span><span class="op">(</span></span>
 <span>  <span class="va">audio</span>,</span>
 <span>  config <span class="op">=</span> <span class="fu"><a href="../reference/sm_transcription_config.html">sm_transcription_config</a></span><span class="op">(</span>diarization <span class="op">=</span> <span class="fu"><a href="../reference/sm_diarize_speaker.html">sm_diarize_speaker</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Submitting 'testrecording.mp3'</span></span>
+<span><span class="co">#&gt; ℹ Job ID: "3kn7xr2abc"</span></span>
+<span><span class="co">#&gt; ✔ Waiting for transcription [7.2s]</span></span>
+<span><span class="co">#&gt; ✔ Saved to testrecording.txt</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="channel-diarization">Channel diarization<a class="anchor" aria-label="anchor" href="#channel-diarization"></a>
@@ -118,7 +134,11 @@ audio channels:</p>
 <span>  config <span class="op">=</span> <span class="fu"><a href="../reference/sm_transcription_config.html">sm_transcription_config</a></span><span class="op">(</span></span>
 <span>    diarization <span class="op">=</span> <span class="fu"><a href="../reference/sm_diarize_channel.html">sm_diarize_channel</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Agent"</span>, <span class="st">"Caller"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; ✔ Submitting 'testrecording.mp3'</span></span>
+<span><span class="co">#&gt; ℹ Job ID: "5pq2mt4def"</span></span>
+<span><span class="co">#&gt; ✔ Waiting for transcription [6.5s]</span></span>
+<span><span class="co">#&gt; ✔ Saved to testrecording.txt</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -129,14 +149,47 @@ audio channels:</p>
 <code class="sourceCode R"><span><span class="co"># list all jobs</span></span>
 <span><span class="va">jobs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sm_list_jobs.html">sm_list_jobs</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">jobs</span></span>
+<span><span class="co">#&gt;           id status               created_at             data_name duration</span></span>
+<span><span class="co">#&gt; 1 2om9psu1np   done 2026-06-06T08:12:19.089Z     testrecording.mp3        3</span></span>
+<span><span class="co">#&gt; 2 w06jp9mjvm   done 2026-06-04T10:19:28.351Z               idea-morning-walk.mp3     2037</span></span>
+<span><span class="co">#&gt; 3 xco00nzvpq   done 2026-06-01T11:33:28.303Z conf-talk.mp3     1501</span></span>
+<span><span class="co">#&gt;   language operating_point diarization</span></span>
+<span><span class="co">#&gt; 1       en        standard        &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 2       en        enhanced     speaker</span></span>
+<span><span class="co">#&gt; 3       en        enhanced     speaker</span></span>
 <span></span>
 <span><span class="co"># get a transcript in different formats</span></span>
-<span><span class="fu"><a href="../reference/sm_get_transcript.html">sm_get_transcript</a></span><span class="op">(</span><span class="va">jobs</span><span class="op">$</span><span class="va">id</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/sm_get_transcript.html">sm_get_transcript</a></span><span class="op">(</span><span class="va">jobs</span><span class="op">$</span><span class="va">id</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, format <span class="op">=</span> <span class="st">"srt"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/sm_get_transcript.html">sm_get_transcript</a></span><span class="op">(</span><span class="va">jobs</span><span class="op">$</span><span class="va">id</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, format <span class="op">=</span> <span class="st">"json-v2"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/sm_get_transcript.html">sm_get_transcript</a></span><span class="op">(</span><span class="st">"2om9psu1np"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Hi. This is a test recording."</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/sm_get_transcript.html">sm_get_transcript</a></span><span class="op">(</span><span class="st">"2om9psu1np"</span>, format <span class="op">=</span> <span class="st">"srt"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "1\n00:00:00,000 --&gt; 00:00:02,000\nHi. This is a test recording.\n"</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/sm_get_transcript.html">sm_get_transcript</a></span><span class="op">(</span><span class="st">"2om9psu1np"</span>, format <span class="op">=</span> <span class="st">"json-v2"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $format</span></span>
+<span><span class="co">#&gt; [1] "2.9"</span></span>
+<span><span class="co">#&gt;</span></span>
+<span><span class="co">#&gt; $job</span></span>
+<span><span class="co">#&gt; $job$created_at</span></span>
+<span><span class="co">#&gt; [1] "2026-06-06T08:12:19.089Z"</span></span>
+<span><span class="co">#&gt;</span></span>
+<span><span class="co">#&gt; $job$data_name</span></span>
+<span><span class="co">#&gt; [1] "testrecording.mp3"</span></span>
+<span><span class="co">#&gt;</span></span>
+<span><span class="co">#&gt; $results</span></span>
+<span><span class="co">#&gt; $results[[1]]</span></span>
+<span><span class="co">#&gt; $results[[1]]$alternatives</span></span>
+<span><span class="co">#&gt; $results[[1]]$alternatives[[1]]</span></span>
+<span><span class="co">#&gt; $results[[1]]$alternatives[[1]]$confidence</span></span>
+<span><span class="co">#&gt; [1] 1</span></span>
+<span><span class="co">#&gt;</span></span>
+<span><span class="co">#&gt; $results[[1]]$alternatives[[1]]$content</span></span>
+<span><span class="co">#&gt; [1] "Hi"</span></span>
+<span><span class="co">#&gt;</span></span>
+<span><span class="co">#&gt; ...</span></span>
 <span></span>
 <span><span class="co"># delete a job</span></span>
-<span><span class="fu"><a href="../reference/sm_delete_job.html">sm_delete_job</a></span><span class="op">(</span><span class="va">jobs</span><span class="op">$</span><span class="va">id</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/sm_delete_job.html">sm_delete_job</a></span><span class="op">(</span><span class="st">"2om9psu1np"</span><span class="op">)</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
