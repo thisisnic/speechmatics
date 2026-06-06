@@ -29,3 +29,11 @@ The output path, invisibly.
 Submits an audio file to the Speechmatics API, polls until complete,
 and writes the transcript to a file.
 }
+\examples{
+\dontrun{
+audio <- system.file("extdata", "testrecording.mp3", package = "speechmatics")
+sm_transcribe(audio)
+sm_transcribe(audio, "output.txt")
+sm_transcribe(audio, config = sm_transcription_config(quality = "enhanced"))
+}
+}

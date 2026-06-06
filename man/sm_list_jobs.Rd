@@ -12,3 +12,8 @@ A data frame of jobs.
 \description{
 List all jobs
 }
+\examples{
+\dontrun{
+sm_list_jobs()
+}
+}

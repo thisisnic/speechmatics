@@ -15,3 +15,9 @@ A diarization config list.
 \description{
 Configure channel diarization
 }
+\examples{
+sm_diarize_channel()
+
+# label channels
+sm_diarize_channel(labels = c("Nic", "Jess"))
+}

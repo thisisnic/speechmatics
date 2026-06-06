@@ -20,3 +20,11 @@ Transcript as a character string (\code{"txt"} and \code{"srt"}) or a list
 \description{
 Get transcript for a completed job
 }
+\examples{
+\dontrun{
+jobs <- sm_list_jobs()
+sm_get_transcript(jobs$id[1])
+sm_get_transcript(jobs$id[1], format = "srt")
+sm_get_transcript(jobs$id[1], format = "json-v2")
+}
+}

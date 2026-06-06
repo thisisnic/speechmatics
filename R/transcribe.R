@@ -19,6 +19,10 @@ submit <- function(audio_path, config = sm_transcription_config()) {
 #' List all jobs
 #'
 #' @return A data frame of jobs.
+#' @examples
+#' \dontrun{
+#' sm_list_jobs()
+#' }
 #' @export
 sm_list_jobs <- function() {
   resp <- req() |>
@@ -62,6 +66,13 @@ get_status <- function(job_id) {
 #'   labels, and confidence scores.
 #' @return Transcript as a character string (`"txt"` and `"srt"`) or a list
 #'   (`"json-v2"`).
+#' @examples
+#' \dontrun{
+#' jobs <- sm_list_jobs()
+#' sm_get_transcript(jobs$id[1])
+#' sm_get_transcript(jobs$id[1], format = "srt")
+#' sm_get_transcript(jobs$id[1], format = "json-v2")
+#' }
 #' @export
 sm_get_transcript <- function(job_id, format = c("txt", "srt", "json-v2")) {
   format <- match.arg(format)
@@ -119,6 +130,13 @@ usage <- function() {
 #' @param config Config from `sm_transcription_config()`.
 #' @param poll_interval Seconds between status checks.
 #' @return The output path, invisibly.
+#' @examples
+#' \dontrun{
+#' audio <- system.file("extdata", "testrecording.mp3", package = "speechmatics")
+#' sm_transcribe(audio)
+#' sm_transcribe(audio, "output.txt")
+#' sm_transcribe(audio, config = sm_transcription_config(quality = "enhanced"))
+#' }
 #' @export
 sm_transcribe <- function(input, output = NULL, config = sm_transcription_config(),
                        poll_interval = 5) {

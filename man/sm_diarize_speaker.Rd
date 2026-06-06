@@ -19,3 +19,7 @@ A diarization config list.
 \description{
 Configure speaker diarization
 }
+\examples{
+sm_diarize_speaker()
+sm_diarize_speaker(sensitivity = 0.8, prefer_current = TRUE)
+}

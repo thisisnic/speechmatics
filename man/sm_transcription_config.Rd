@@ -24,3 +24,8 @@ A config list suitable for passing to \code{\link[=sm_transcribe]{sm_transcribe(
 \description{
 Build transcription config
 }
+\examples{
+sm_transcription_config()
+sm_transcription_config(language = "fr", quality = "enhanced")
+sm_transcription_config(diarization = sm_diarize_speaker())
+}
