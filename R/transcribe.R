@@ -4,7 +4,7 @@
 #' @param config Config list from `transcription_config()`.
 #' @return The job ID (character string).
 #' @noRd
-submit <- function(audio_path, config = transcription_config()) {
+submit <- function(audio_path, config = sm_transcription_config()) {
   resp <- req() |>
     httr2::req_url_path_append("jobs") |>
     httr2::req_body_multipart(
@@ -19,8 +19,8 @@ submit <- function(audio_path, config = transcription_config()) {
 #' List all jobs
 #'
 #' @return A data frame of jobs.
-#' @noRd
-list_jobs <- function() {
+#' @export
+sm_list_jobs <- function() {
   resp <- req() |>
     httr2::req_url_path_append("jobs") |>
     httr2::req_perform()
@@ -54,14 +54,16 @@ get_status <- function(job_id) {
   httr2::resp_body_json(resp)$job$status
 }
 
-#' Get transcript for a completed job as text
+#' Get transcript for a completed job
 #'
 #' @param job_id Job ID string.
-#' @param format Output format: `"txt"` for plain text (default) or `"srt"` for
-#'   subtitles.
-#' @return Transcript as a character string.
-#' @noRd
-get_transcript <- function(job_id, format = c("txt", "srt")) {
+#' @param format Output format: `"txt"` for plain text (default), `"srt"` for
+#'   subtitles, or `"json-v2"` for structured data with timestamps, speaker
+#'   labels, and confidence scores.
+#' @return Transcript as a character string (`"txt"` and `"srt"`) or a list
+#'   (`"json-v2"`).
+#' @export
+sm_get_transcript <- function(job_id, format = c("txt", "srt", "json-v2")) {
   format <- match.arg(format)
 
   resp <- req() |>
@@ -69,30 +71,19 @@ get_transcript <- function(job_id, format = c("txt", "srt")) {
     httr2::req_url_query(format = format) |>
     httr2::req_perform()
 
-  httr2::resp_body_string(resp)
-}
-
-#' Get transcript for a completed job as structured data
-#'
-#' @param job_id Job ID string.
-#' @return A list containing the parsed JSON transcript with timestamps,
-#'   speaker labels, and confidence scores.
-#' @noRd
-get_transcript_json <- function(job_id) {
-  resp <- req() |>
-    httr2::req_url_path_append("jobs", job_id, "transcript") |>
-    httr2::req_url_query(format = "json-v2") |>
-    httr2::req_perform()
-
-  httr2::resp_body_json(resp)
+  if (format == "json-v2") {
+    httr2::resp_body_json(resp)
+  } else {
+    httr2::resp_body_string(resp)
+  }
 }
 
 #' Delete a job
 #'
 #' @param job_id Job ID string.
 #' @return `TRUE`, invisibly.
-#' @noRd
-delete_job <- function(job_id) {
+#' @export
+sm_delete_job <- function(job_id) {
   req() |>
     httr2::req_url_path_append("jobs", job_id) |>
     httr2::req_method("DELETE") |>
@@ -125,11 +116,11 @@ usage <- function() {
 #' @param output Path to the output transcript file. If `NULL` (the default),
 #'   the output is written to the working directory with the same name as the
 #'   input file but with a `.txt` extension.
-#' @param config Config from `transcription_config()`.
+#' @param config Config from `sm_transcription_config()`.
 #' @param poll_interval Seconds between status checks.
 #' @return The output path, invisibly.
 #' @export
-transcribe <- function(input, output = NULL, config = transcription_config(),
+sm_transcribe <- function(input, output = NULL, config = sm_transcription_config(),
                        poll_interval = 5) {
   if (!is.character(input) || length(input) != 1) {
     cli::cli_abort("{.arg input} must be a single string, not {.obj_type_friendly {input}}.")
@@ -161,7 +152,7 @@ transcribe <- function(input, output = NULL, config = transcription_config(),
   }
 
   cli::cli_progress_step("Downloading transcript")
-  transcript <- get_transcript(job_id)
+  transcript <- sm_get_transcript(job_id)
   writeLines(transcript, output)
   cli::cli_alert_success("Saved to {.path {output}}")
   invisible(output)

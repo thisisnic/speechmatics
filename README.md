@@ -29,17 +29,18 @@ SPEECHMATICS_API_KEY=your-key-here
 library(speechmatics)
 
 # Transcribe an audio file (writes `./testrecording.txt`)
-transcribe("testrecording.mp3")
+audio <- system.file("extdata", "testrecording.mp3", package = "speechmatics")
+sm_transcribe(audio)
 
 # Specify output path
-transcribe("testrecording.mp3", "output.txt")
+sm_transcribe(audio, "output.txt")
 
 # Enhanced quality with speaker diarization
-transcribe(
-  "interview.mp3",
-  config = transcription_config(
+sm_transcribe(
+  audio,
+  config = sm_transcription_config(
     quality = "enhanced",
-    diarization = diarize_speaker()
+    diarization = sm_diarize_speaker()
   )
 )
 ```

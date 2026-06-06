@@ -5,8 +5,8 @@
 #' @param prefer_current Logical. Reduces false switches between
 #'   similar-sounding speakers.
 #' @return A diarization config list.
-#' @noRd
-diarize_speaker <- function(sensitivity = 0.5, prefer_current = FALSE) {
+#' @export
+sm_diarize_speaker <- function(sensitivity = 0.5, prefer_current = FALSE) {
   list(
     diarization = "speaker",
     speaker_diarization_config = list(
@@ -20,8 +20,8 @@ diarize_speaker <- function(sensitivity = 0.5, prefer_current = FALSE) {
 #'
 #' @param labels Character vector of channel labels (e.g. `c("Agent", "Caller")`).
 #' @return A diarization config list.
-#' @noRd
-diarize_channel <- function(labels = NULL) {
+#' @export
+sm_diarize_channel <- function(labels = NULL) {
   cfg <- list(diarization = "channel")
   if (!is.null(labels)) {
     cfg$channel_diarization_labels <- labels
@@ -33,11 +33,11 @@ diarize_channel <- function(labels = NULL) {
 #'
 #' @param language Language code (default `"en"`).
 #' @param quality `"standard"` or `"enhanced"`.
-#' @param diarization A diarization object from `diarize_speaker()` or
-#'   `diarize_channel()`, or `NULL` for no diarization.
-#' @return A config list suitable for passing to [transcribe()].
+#' @param diarization A diarization object from `sm_diarize_speaker()` or
+#'   `sm_diarize_channel()`, or `NULL` for no diarization.
+#' @return A config list suitable for passing to [sm_transcribe()].
 #' @export
-transcription_config <- function(language = "en",
+sm_transcription_config <- function(language = "en",
                       quality = c("standard", "enhanced"),
                       diarization = NULL) {
   quality <- match.arg(quality)
