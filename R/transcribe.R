@@ -92,6 +92,10 @@ sm_get_transcript <- function(job_id, format = c("txt", "srt", "json-v2")) {
 #'
 #' @param job_id Job ID string.
 #' @return `TRUE`, invisibly.
+#' @examples
+#' \dontrun{
+#' sm_delete_job("2om9psu1np")
+#' }
 #' @export
 sm_delete_job <- function(job_id) {
   req() |>

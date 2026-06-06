@@ -15,3 +15,8 @@ sm_delete_job(job_id)
 \description{
 Delete a job
 }
+\examples{
+\dontrun{
+sm_delete_job("2om9psu1np")
+}
+}

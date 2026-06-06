@@ -1,8 +1,8 @@
 Package: speechmatics
 Title: Client for the 'Speechmatics' Speech-to-Text API
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R:
-    person("Nic", "Crane", , "thisisnic@gmail.com", role = c("aut", "cre"))
+    person("Nic", "Crane", , "thisisnic@gmail.com", role = c("aut", "cre", "cph"))
 Description: Transcribe audio files using the 'Speechmatics'
     speech-to-text API <https://www.speechmatics.com/>. Supports custom
     vocabulary, speaker diarization, punctuation control, and audio

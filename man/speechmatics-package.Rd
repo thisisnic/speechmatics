@@ -18,11 +18,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Nic Crane \email{thisisnic@gmail.com}
+\strong{Maintainer}: Nic Crane \email{thisisnic@gmail.com} [copyright holder]
 
 Authors:
 \itemize{
-  \item Nic Crane \email{thisisnic@gmail.com}
+  \item Nic Crane \email{thisisnic@gmail.com} [copyright holder]
 }
 
 }
