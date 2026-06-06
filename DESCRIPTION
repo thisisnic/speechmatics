@@ -7,7 +7,7 @@ Description: Transcribe audio files using the 'Speechmatics'
     speech-to-text API <https://www.speechmatics.com/>. Supports custom
     vocabulary, speaker diarization, punctuation control, and audio
     filtering.
-URL: https://github.com/thisisnic/speechmatics
+URL: https://github.com/thisisnic/speechmatics, https://thisisnic.github.io/speechmatics/
 BugReports: https://github.com/thisisnic/speechmatics/issues
 License: MIT + file LICENSE
 Imports:
