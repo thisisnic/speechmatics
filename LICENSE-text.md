@@ -1,4 +1,4 @@
 # License
 
     YEAR: 2026
-    COPYRIGHT HOLDER: speechmatics authors
+    COPYRIGHT HOLDER: Nic Crane
