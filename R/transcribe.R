@@ -169,7 +169,6 @@ sm_transcribe <- function(input, output = NULL, config = sm_transcription_config
     cli::cli_abort("Transcription job failed with status {.val {status}}.")
   }
 
-  cli::cli_progress_step("Downloading transcript")
   transcript <- sm_get_transcript(job_id)
   writeLines(transcript, output)
   cli::cli_alert_success("Saved to {.path {output}}")
