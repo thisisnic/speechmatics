@@ -13,7 +13,7 @@ License: MIT + file LICENSE
 Imports:
     cli,
     curl,
-    httr2,
+    httr2 (>= 1.2.0),
     jsonlite,
     rlang
 Depends: R (>= 4.2.0)
