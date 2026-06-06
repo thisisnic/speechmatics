@@ -4,9 +4,9 @@
 \name{speechmatics-package}
 \alias{speechmatics}
 \alias{speechmatics-package}
-\title{speechmatics: R Client for the Speechmatics API}
+\title{speechmatics: Client for the 'Speechmatics' Speech-to-Text API}
 \description{
-Transcribe audio files using the Speechmatics speech-to-text API. Supports custom vocabulary, speaker diarization, punctuation control, and audio filtering.
+Transcribe audio files using the 'Speechmatics' speech-to-text API \url{https://www.speechmatics.com/}. Supports custom vocabulary, speaker diarization, punctuation control, and audio filtering.
 }
 \seealso{
 Useful links:
