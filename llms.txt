@@ -1,0 +1,74 @@
+# speechmatics
+
+An R client for the [Speechmatics](https://www.speechmatics.com/)
+speech-to-text API.
+
+## Installation
+
+``` r
+
+# install.packages("pak")
+pak::pak("thisisnic/speechmatics")
+```
+
+## Setup
+
+Set your API key as an environment variable:
+
+``` r
+
+Sys.setenv(SPEECHMATICS_API_KEY = "your-key-here")
+```
+
+Or add it to your `.Renviron`:
+
+    SPEECHMATICS_API_KEY=your-key-here
+
+## Usage
+
+``` r
+
+library(speechmatics)
+
+# Transcribe an audio file (writes `./testrecording.txt`)
+audio <- system.file("extdata", "testrecording.mp3", package = "speechmatics")
+sm_transcribe(audio)
+
+# Specify output path
+sm_transcribe(audio, "output.txt")
+
+# Enhanced quality with speaker diarization
+sm_transcribe(
+  audio,
+  config = sm_transcription_config(
+    quality = "enhanced",
+    diarization = sm_diarize_speaker()
+  )
+)
+```
+
+# Package index
+
+## All functions
+
+- [`sm_delete_job()`](https://thisisnic.github.io/speechmatics/reference/sm_delete_job.md)
+  : Delete a job
+- [`sm_diarize_channel()`](https://thisisnic.github.io/speechmatics/reference/sm_diarize_channel.md)
+  : Configure channel diarization
+- [`sm_diarize_speaker()`](https://thisisnic.github.io/speechmatics/reference/sm_diarize_speaker.md)
+  : Configure speaker diarization
+- [`sm_get_transcript()`](https://thisisnic.github.io/speechmatics/reference/sm_get_transcript.md)
+  : Get transcript for a completed job
+- [`sm_list_jobs()`](https://thisisnic.github.io/speechmatics/reference/sm_list_jobs.md)
+  : List all jobs
+- [`sm_transcribe()`](https://thisisnic.github.io/speechmatics/reference/sm_transcribe.md)
+  : Transcribe an audio file
+- [`sm_transcription_config()`](https://thisisnic.github.io/speechmatics/reference/sm_transcription_config.md)
+  : Build transcription config
+
+# Articles
+
+### All vignettes
+
+- [Getting Started with
+  speechmatics](https://thisisnic.github.io/speechmatics/articles/speechmatics.md):

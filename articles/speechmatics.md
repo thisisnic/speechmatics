@@ -1,0 +1,99 @@
+# Getting Started with speechmatics
+
+## Authentication
+
+The package uses the Speechmatics API, which requires an API key. Sign
+up at <https://www.speechmatics.com/> to get one, then set it as an
+environment variable:
+
+``` r
+
+Sys.setenv(SPEECHMATICS_API_KEY = "your-key-here")
+```
+
+For persistent use, add it to your `.Renviron` file:
+
+    SPEECHMATICS_API_KEY=your-key-here
+
+## Basic transcription
+
+[`sm_transcribe()`](https://thisisnic.github.io/speechmatics/reference/sm_transcribe.md)
+submits an audio file, waits for the result, and writes the transcript
+to a text file in your working directory:
+
+``` r
+
+library(speechmatics)
+
+audio <- system.file("extdata", "testrecording.mp3", package = "speechmatics")
+sm_transcribe(audio)
+```
+
+You can also specify the output path:
+
+``` r
+
+sm_transcribe(audio, "my_transcript.txt")
+```
+
+## Configuration
+
+Use
+[`sm_transcription_config()`](https://thisisnic.github.io/speechmatics/reference/sm_transcription_config.md)
+to control language, quality, and diarization:
+
+``` r
+
+# French, enhanced quality
+sm_transcribe(
+  audio,
+  config = sm_transcription_config(language = "fr", quality = "enhanced")
+)
+```
+
+### Speaker diarization
+
+Speaker diarization identifies who said what from a single audio
+channel:
+
+``` r
+
+sm_transcribe(
+  audio,
+  config = sm_transcription_config(diarization = sm_diarize_speaker())
+)
+```
+
+### Channel diarization
+
+Channel diarization separates speakers that are already on different
+audio channels:
+
+``` r
+
+sm_transcribe(
+  audio,
+  config = sm_transcription_config(
+    diarization = sm_diarize_channel(labels = c("Agent", "Caller"))
+  )
+)
+```
+
+## Managing jobs
+
+You can work with jobs directly using the lower-level functions:
+
+``` r
+
+# list all jobs
+jobs <- sm_list_jobs()
+jobs
+
+# get a transcript in different formats
+sm_get_transcript(jobs$id[1])
+sm_get_transcript(jobs$id[1], format = "srt")
+sm_get_transcript(jobs$id[1], format = "json-v2")
+
+# delete a job
+sm_delete_job(jobs$id[1])
+```
